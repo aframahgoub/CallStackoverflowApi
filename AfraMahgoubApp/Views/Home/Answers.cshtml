@@ -1,0 +1,36 @@
+﻿
+
+@{
+    ViewBag.Title = "answers";
+}
+<h2>answers of question @ViewBag.id</h2>
+<input type="submit" class="btn btn-danger"  value="Close" name="Command" onclick="location.href='/';" />
+<table class="table">
+
+    <thead>
+        <tr>
+
+            <td>
+                answere
+
+            </td>
+            <td>
+                Owner
+            </td>
+
+        </tr>
+    </thead>
+    @foreach (var answeres in (IEnumerable<AfraMahgoubApp.Models.answere>)ViewData["answeres"])
+    {
+        <tr>
+            <td>  @Html.Raw(answeres.body)</td>
+            <td> <img style="max-width: 40px;" src="@answeres.owner.profile_image" /> <a href="@answeres.owner.link">@answeres.owner.display_name</a>   </td>
+
+        </tr>
+
+
+
+    }
+</table>
+
+<input type="submit"  class="btn btn-primary" value="Back" name="Command" onclick="location.href='/';" />

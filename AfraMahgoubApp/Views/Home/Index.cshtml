@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Stack overflow";
+}
+<br />
+<br />
+<input type="submit" id="button1" class="btn btn-primary" value="Refresh" name="Command" onclick="location.href='/';" />
+
+<br />
+<div class="box-body" id="homeIndex">
+    <table class="table">
+
+        <thead>
+            <tr>
+                <td>
+                    Questions
+                </td>
+                <td>
+                    Owner
+                </td>
+                <td>
+                    Action
+                </td>
+            </tr>
+        </thead>
+        @foreach (var questions in (IEnumerable<AfraMahgoubApp.Models.Item>)ViewData["questions"])
+        {
+            <tr>
+                <td>@questions.title</td>
+                <td> <img style="max-width: 40px;" src="@questions.owner.profile_image" /> <a href="@questions.owner.link">@questions.owner.display_name</a>   </td>
+                <td>
+                    <a  class="btn btn-primary" href="/Home/answers/@questions.question_id">
+                        view
+                    </a>
+                </td>
+            </tr>
+
+
+
+        }
+    </table>
+    @*<table class="table">
+        <thead>
+            <tr>
+                
+                
+                <th scope="col">Question</th>
+                <th scope="col">link</th>
+            </tr>
+        </thead>
+     
+
+        <tbody>
+            @foreach (var questions in (IEnumerable<AfraMahgoubApp.Models.Item>)ViewData["questions"])
+            {
+
+                <tr>
+
+                    <td><b>@questions.title </b></td>
+                    <td data-toggle="modal" data-target="#exampleModal" data-id=@questions.question_id><a>@questions.link</a></td>
+
+                </tr>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <b>Title  </b>
+                                  @questions.title
+                                <br /><b>Creation Date</b>
+                                @questions.creation_date
+                                <br /><b>Link</b>
+                                <a>@questions.link</a>
+                                <br /><b>is answered?</b>
+                                <a>@questions.is_answered</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>*@
+</div>
+
